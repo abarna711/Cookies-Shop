@@ -2,7 +2,7 @@ import React from "react";
 import Homesec from "../pages/Homesec";
 import About from "./About";
 import Section4 from "./Section4";
-import Delivery from "./Ingredient";
+import Delivery from "./Delivery";
 import Contact from "./Contact";
 import Product from "../pages/Product";
 // import Demo from "./Demo";
@@ -16,7 +16,7 @@ function Home(){
         <Delivery/>
         <Section4/>
         <Product/>
-         <Contact/>
+        <Contact/>
          {/* <Demo/> */}
       </div>  
     );

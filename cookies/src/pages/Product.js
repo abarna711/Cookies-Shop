@@ -1,10 +1,38 @@
-import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { addToCart } from '../action/cartAction';
+import React, { useState, useEffect } from 'react';
+// import { useDispatch } from 'react-redux';
+// import { addToCart } from '../action/cartAction';
+import axios from 'axios';
+
 
 function Product() {
-  const dispatch = useDispatch();
-  const products = useSelector(state => state.products);
+  // const dispatch = useDispatch();
+  // const products = useSelector(state => state.products);
+  const [products, setProducts] = useState([]);
+
+
+  useEffect(() => {
+    fetchProducts();
+  }, []);
+
+  const fetchProducts = () => {
+    axios.get('http://localhost:5000/api/products')
+      .then((response) => {
+        setProducts(response.data);
+      })
+      .catch((error) => {
+        console.error('Error fetching products:', error);
+      });
+  };
+
+  const addToCart = (id, quantity) => {
+    axios.post('http://localhost:5000/api/cart', { id, quantity })
+      .then((response) => {
+        fetchProducts(); // Fetch updated product list after adding to cart
+      })
+      .catch((error) => {
+        console.error('Error adding to cart:', error);
+      });
+  };
 
   return (
     <div className='product pt-5 mt-3 ps-5 mb-4'>
@@ -18,9 +46,9 @@ function Product() {
               <div className="product-details ms-5 mt-2">
                 <span className="product-name  ">{product.name}</span><br />
                 <span className="product-price ">₹{product.price}</span><br />
-                <button className='btn   mt-3 mb-2'style={{width:"70%"}} onClick={() => dispatch(addToCart(product))}>Add to Cart</button>
+                <button className='btn   mt-3 mb-2'style={{width:"70%"}} onClick={() => addToCart(product)}>Add to Cart</button>
               </div>
-            </div>
+          </div>
             </div>
           </li>
         ))}

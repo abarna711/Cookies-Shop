@@ -20,7 +20,7 @@ function Footer(){
                   <div className='ms-3'><img src={img2} alt='visa'/></div>
                   <div className='ms-3'><img src={img3} alt='visa'/></div>
                   <div className='ms-3'><img src={img4} alt='visa'/></div>
-                  <div className='ms-3'><img src={img5} alt='visa' style={{width:'40px'}}/></div>
+                  <div className='ms-3'><img src={img5} alt='visa'/></div>
                </div>
                <div className='ficon col col-lg-4 col-md-12 col-12 mt-4 ps-5'>
                 <div className='ms-5 ps-5'><BiLogoFacebook style={{color:'white',fontSize:'30px'}}/></div>
